@@ -1,0 +1,65 @@
+{
+    "name": "hitarthpattani/module-code-validator",
+    "description": "This module is used to enhance the readability of the magento2 module code and ensure that code meets the Magento Coding Standard.",
+    "type": "library",
+    "keywords": [
+        "code-validator",
+        "coding-standards",
+        "best-practices"
+    ],
+    "homepage": "https://github.com/hitarthpattani/module-code-validator",
+    "require": {
+        "php": ">=7.1",
+        "ext-PDO": "*",
+        "ext-json": "*",
+        "ext-sockets": "*",
+        "composer/composer": "^1.4",
+        "composer/semver": "^1.4",
+        "monolog/monolog": "^1.16",
+        "nesbot/carbon": "^1.0 || ^2.0",
+        "psr/container": "^1.0",
+        "psr/log": "^1.0",
+        "symfony/config": "^5.3",
+        "symfony/console": "^2.8 || ^4.0",
+        "symfony/dependency-injection": "^3.3 || ^4.3 || ^5.3",
+        "symfony/process": "^2.1 || ^4.1",
+        "symfony/serializer": "^2.8 || ^3.3 || ^4.0",
+        "symfony/yaml": "^3.3 || ^4.0 || ^5.3"
+    },
+    "require-dev": {
+        "phpmd/phpmd": "^2.0 || ^3.0",
+        "magento/magento-coding-standard": "^3 || ^4 || ^5",
+        "squizlabs/php_codesniffer": "^2.3 || ^3.0.2",
+        "sebastian/phpcpd": "~3.0 || ~4.0"
+    },
+    "conflict": {
+        "squizlabs/php_codesniffer": "2.6.2"
+    },
+    "license": [
+        "BSD-3-Clause"
+    ],
+    "authors": [
+        {
+            "name": "Hitarth Pattani",
+            "role": "Author"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "HitarthPattani\\CodeValidator\\": "src/"
+        }
+    },
+    "bin": [
+        "bin/codevalidator"
+    ],
+    "scripts": {
+        "post-install-cmd": [
+            "([ $COMPOSER_DEV_MODE -eq 0 ] || vendor/bin/phpcs --config-set installed_paths ../../magento/magento-coding-standard/)"
+        ],
+        "post-update-cmd": [
+            "([ $COMPOSER_DEV_MODE -eq 0 ] || vendor/bin/phpcs --config-set installed_paths ../../magento/magento-coding-standard/)"
+        ]
+    }
+}
